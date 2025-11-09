@@ -55,6 +55,27 @@ Kodu kopyala
 streamlit run app.py
 👉 Tarayıcıda aç: http://localhost:8501
 
+ai-interview-coach/
+│
+├─ app.py                  # Streamlit UI
+├─ interview_analyzer.py   # NLP ve analiz fonksiyonları
+└─ requirements.txt        # Gerekli bağımlılıklar
+⚙️ Kurulum
+1️⃣ Projeyi Klonla
+bash
+Kodu kopyala
+git clone https://github.com/<kullanıcı-adın>/ai-interview-coach.git
+cd ai-interview-coach
+2️⃣ Gerekli Kütüphaneleri Yükle
+bash
+Kodu kopyala
+pip install -r requirements.txt
+3️⃣ Uygulamayı Çalıştır
+bash
+Kodu kopyala
+streamlit run app.py
+👉 Tarayıcıda aç: http://localhost:8501
+
 💬 Kullanım
 Uygulamayı başlat.
 
