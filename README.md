@@ -1,171 +1,119 @@
-# 🧠 AI Interview Coach  
-### Yapay Zekâ Destekli Mülakat Sorusu Analiz ve Yanıt Üretici  
+# 🧠 AI Interview Coach
+### Yapay Zekâ Destekli Mülakat Sorusu Analiz ve Yanıt Üretici
 
-**AI Interview Coach**, yapay zekâ destekli bir NLP projesidir.  
-Kullanıcıdan gelen bir mülakat sorusunu alır, HuggingFace modeliyle örnek bir profesyonel cevap üretir  
-ve cevabı analiz ederek güçlü ve zayıf yönleri değerlendirir.  
-
----
-
-## 🚀 Özellikler
-
-✅ Kullanıcının yazdığı mülakat sorusuna otomatik örnek cevap üretir  
-✅ Cevap üzerinde duygu (pozitiflik), iletişim, yapı ve detay analizleri yapar  
-✅ Güçlü yönler 💪 ve geliştirme alanlarını ⚙️ özetler  
-✅ Streamlit arayüzü ile etkileşimli kullanım  
-✅ HuggingFace `distilgpt2` modeli ile text-generation  
-✅ HuggingFace sentiment modeli + NLTK + sklearn ile metin analizi  
-✅ Kullanıcı dostu arayüz ve basit kurulum  
-
----
-
+**AI Interview Coach**, kullanıcının girdiği mülakat sorusuna HuggingFace modelleriyle örnek cevap üreten ve bu cevabı çeşitli ölçütlere göre analiz ederek güçlü/geliştirme alanlarını özetleyen küçük bir NLP uygulamasıdır.
 ## 🧩 Kullanılan Teknolojiler
 
 | Katman | Teknoloji |
-|--------|------------|
+|-------:|:---------|
 | Backend / NLP | Python, Transformers (distilgpt2, sentiment-analysis) |
 | NLP Toolkit | NLTK, scikit-learn |
 | Frontend | Streamlit |
 | Model | HuggingFace Transformers |
-| Veri Analizi | PyTorch (CPU uyumlu) |
+| Veri İşleme | PyTorch (CPU uyumlu) |
 
 ---
 
 ## 📂 Proje Yapısı
 
+```
+ai-interview-coach/
+├─ app.py                  # Streamlit UI
+├─ interview_analyzer.py   # NLP ve analiz fonksiyonları
+└─ requirements.txt        # Gerekli bağımlılıklar
+```
+
+## ⚙️ Kurulum
+
+1) Depoyu klonlayın:
+
 ```bash
-ai-interview-coach/
-│
-├─ app.py                  # Streamlit UI
-├─ interview_analyzer.py   # NLP ve analiz fonksiyonları
-└─ requirements.txt        # Gerekli bağımlılıklar
-⚙️ Kurulum
-1️⃣ Projeyi Klonla
-bash
-Kodu kopyala
 git clone https://github.com/<kullanıcı-adın>/ai-interview-coach.git
 cd ai-interview-coach
-2️⃣ Gerekli Kütüphaneleri Yükle
-bash
-Kodu kopyala
+```
+
+2) Bağımlılıkları kurun:
+
+```bash
 pip install -r requirements.txt
-3️⃣ Uygulamayı Çalıştır
-bash
-Kodu kopyala
+```
+
+3) Uygulamayı çalıştırın:
+
+```bash
 streamlit run app.py
-👉 Tarayıcıda aç: http://localhost:8501
+```
 
-ai-interview-coach/
-│
-├─ app.py                  # Streamlit UI
-├─ interview_analyzer.py   # NLP ve analiz fonksiyonları
-└─ requirements.txt        # Gerekli bağımlılıklar
-⚙️ Kurulum
-1️⃣ Projeyi Klonla
-bash
-Kodu kopyala
-git clone https://github.com/<kullanıcı-adın>/ai-interview-coach.git
-cd ai-interview-coach
-2️⃣ Gerekli Kütüphaneleri Yükle
-bash
-Kodu kopyala
-pip install -r requirements.txt
-3️⃣ Uygulamayı Çalıştır
-bash
-Kodu kopyala
-streamlit run app.py
-👉 Tarayıcıda aç: http://localhost:8501
+Tarayıcıda aç: http://localhost:8501
 
-💬 Kullanım
-Uygulamayı başlat.
+---
 
-“Mülakat sorusunu yaz” alanına bir soru gir:
+## 💬 Kullanım
 
-“How do you handle teamwork conflicts?”
+1. Uygulamayı başlatın.
+2. “Mülakat sorusunu yaz” alanına bir soru girin (ör. "How do you handle teamwork conflicts?").
+3. "Cevap Üret ve Analiz Et" butonuna basın.
+4. AI tarafından üretilen cevap, puanlar ve analiz ekran üzerinde gösterilecektir.
 
-“Tell me about a time you failed.”
+---
 
-“Why should we hire you?”
+## 📊 Örnek Çıktı
 
-“Cevap Üret ve Analiz Et” butonuna bas.
-
-AI tarafından üretilen cevap, skorlar ve analiz ekranda görüntülenir.
-
-📊 Çıktı Örneği
-Soru:
-
-How do you handle teamwork conflicts?
+Soru: How do you handle teamwork conflicts?
 
 AI Cevabı (kısaltılmış):
+> In a past project, we had a disagreement about deadlines. I initiated an open discussion to align expectations...
 
-In a past project, we had a disagreement about deadlines. I initiated an open discussion to align expectations.
-We identified priorities, distributed tasks more effectively, and met our goal on time.
+Skorlar (örnek): Pozitiflik 86, İletişim 90, Yapı 84, Detay 78
 
-Skorlar:
+---
 
-Ölçüt	Puan
-Pozitiflik	86
-İletişim	90
-Yapı	84
-Detay	78
+## 🧠 Teknik Notlar
 
-Yapay Zekâ Analizi:
-💪 Güçlü yön: Pozitif ve çözüm odaklı ton
-⚙️ Geliştirme alanı: Daha fazla somut örnek ve sonuç detayı eklenebilir
+- Projede `distilgpt2` text-generation pipeline'ı ve transformers'ın hazır sentiment pipeline'ı kullanılıyor.
+- NLTK ilk kullanımda `punkt` tokenizer'ını indirir; eğer otomatik indirme sorun çıkartıyorsa elle yükleyebilirsiniz:
 
-🧠 NLP Mantığı
-Model akışı şu adımlardan oluşur:
-
-Text Generation (distilgpt2)
-→ Prompt: “You are a senior engineer in an interview. Answer the question professionally using the STAR method.”
-→ Model örnek bir yanıt üretir.
-
-Sentiment Analysis (transformers pipeline)
-→ Üretilen cevabın pozitiflik skoru çıkarılır.
-
-Keyword & Structure Analysis (nltk + sklearn)
-→ STAR yapısına, iletişim kelimelerine ve detay uzunluğuna göre skor hesaplanır.
-
-Feedback Builder
-→ Güçlü yönler ve geliştirme alanları listelenir.
-
-🧪 Test
-İlk kez çalıştırdığında NLTK otomatik olarak gerekli veri setlerini (punkt, punkt_tab) indirir.
-Alternatif olarak manuel de yükleyebilirsin:
-
-python
-Kodu kopyala
+```python
 import nltk
 nltk.download('punkt')
-nltk.download('punkt_tab')
-🌱 Geliştirme Fikirleri
- Türkçe mülakat sorusu ve cevabı desteği
+```
 
- OpenAI API entegrasyonu (GPT-4 / GPT-5)
+---
 
- Kullanıcı oturumu & geçmiş analiz kayıtları
+## 🧪 Test & Geliştirme
 
- PDF raporu oluşturma (ReportLab)
+- İyileştirme fikirleri:
+	- Türkçe soru/cevap desteği eklemek
+	- OpenAI API entegrasyonu (GPT-4/5) seçeneği sunmak
+	- Kullanıcı oturumu ve geçmiş analiz kayıtları
+	- PDF raporu oluşturma (ReportLab)
 
- Mülakat türüne göre ton ayarlama (teknik, davranışsal, liderlik)
+---
 
-🧑‍💻 Katkıda Bulunma
-Fork yap
+## 🧑‍💻 Katkıda Bulunma
 
-Yeni bir branch oluştur (feature/yeni-ozellik)
+1. Fork yapın
+2. Yeni bir branch oluşturun (ör. `feature/yeni-ozellik`)
+3. Değişiklikleri commit edin
+4. Pull request gönderin
 
-Kodlarını commit et
+---
 
-Pull request gönder 🎉
+## 📜 Lisans
 
-📜 Lisans
-Bu proje MIT Lisansı ile yayınlanmıştır.
-Detaylar için LICENSE dosyasına bakabilirsiniz.
+Bu proje MIT Lisansı ile yayınlanmıştır. Detaylar için `LICENSE` dosyasına bakın.
 
-✨ Geliştirici
-Hümeyra Ertaş
-💬 Yapay zekâ destekli kişisel gelişim ve NLP projeleri geliştiriyorum.
+---
 
+## ✨ Geliştirici
+
+Hümeyra Ertaş — Yapay zekâ destekli kişisel gelişim ve NLP projeleri geliştiriyorum.
+
+"Good interviews are not about memorized answers — they're about reflection and clarity."
+
+---
+
+İsterseniz README'ye ekran görüntüsü alanı, deploy demo linki (Render/Railway) ve "Extra + Puan Özellikler" bölümlerini ekleyebilirim. Hangi bölümleri eklememi istersiniz?
 “Good interviews are not about memorized answers — they’re about reflection and clarity.”
 
 — AI Interview Coach
