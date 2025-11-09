@@ -7,12 +7,15 @@ import nltk
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 from transformers import pipeline
 
-# (İlk kullanımda bir defa indirmek için)
-try:
-    nltk.data.find("tokenizers/punkt")
-except LookupError:
-    nltk.download("punkt")
+# GEREKLİ NLTK MODELLERİNİ İNDİR
+def ensure_nltk_resources():
+    for resource in ["punkt", "punkt_tab"]:
+        try:
+            nltk.data.find(f"tokenizers/{resource}")
+        except LookupError:
+            nltk.download(resource)
 
+ensure_nltk_resources()
 
 # --------------------------
 # Modelleri yükle
